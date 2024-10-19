@@ -4,10 +4,16 @@ import jwt from 'jsonwebtoken';
 const JWT_SECRET='sk_883'
 import { Signup } from '../auth.js';
 import { User } from '../db.js';
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt';
+import cors from 'cors'
 
 const master_user='aezakmi'
 const router=express.Router()
+router.use(cors(
+    {
+        origin:"https://localhost:5173"
+    }
+)) ;
 router.use(bodyParser.json()); 
 router.post('/',async(req,res)=>{
     const {id, password}= req.body;
